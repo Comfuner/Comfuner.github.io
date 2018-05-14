@@ -157,7 +157,7 @@ let history = {
             let tempLi = create.child(create.template(templates.simpleSpan, {title: item}));
             tempLi.addEventListener('click', function () {
                 inputBox.value = item;
-                results.get('http://api.soundcloud.com/tracks.json?client_id=' + playerID + '&q=' + item + '&limit=' + numOfResults + '&linked_partitioning=1', item);
+                results.get('//api.soundcloud.com/tracks.json?client_id=' + playerID + '&q=' + item + '&limit=' + numOfResults + '&linked_partitioning=1', item);
             });
             historyContainer.append(tempLi);
         })
@@ -177,7 +177,7 @@ let history = {
         let tempLi = create.child(create.template(templates.simpleSpan, {title: searchTerm}));
         tempLi.addEventListener('click', function () {
             inputBox.value = searchTerm;
-            results.get('http://api.soundcloud.com/tracks.json?client_id=' + playerID + '&q=' + searchTerm + '&limit=' + numOfResults + '&linked_partitioning=1', searchTerm);
+            results.get('//api.soundcloud.com/tracks.json?client_id=' + playerID + '&q=' + searchTerm + '&limit=' + numOfResults + '&linked_partitioning=1', searchTerm);
         });
         historyContainer.insertBefore(tempLi, historyContainer.firstChild);
         localStorage.setItem('scp-history', this.returnLocalState());
@@ -185,7 +185,7 @@ let history = {
 };
 let user = {
     retrieve() {
-        fetch("http://api.soundcloud.com/users/3207?client_id=" + playerID)
+        fetch("//api.soundcloud.com/users/3207?client_id=" + playerID)
             .then(
                 function (response) {
                     if (response.status !== 200) {
@@ -259,7 +259,7 @@ gridViewButton.addEventListener('click', function () {
     resultsContainer.classList.add('gridView');
 });
 goButton.addEventListener('click', function () {
-    results.get('http://api.soundcloud.com/tracks.json?client_id=' + playerID + '&q=' + inputBox.value + '&limit=' + numOfResults + '&linked_partitioning=1', inputBox.value);
+    results.get('//api.soundcloud.com/tracks.json?client_id=' + playerID + '&q=' + inputBox.value + '&limit=' + numOfResults + '&linked_partitioning=1', inputBox.value);
 });
 nextButton.addEventListener('click', function () {
     results.get(localStorage.getItem('next_href'), inputBox.value);
@@ -271,7 +271,7 @@ clearButton.addEventListener('click', function () {
 inputBox.addEventListener('keyup', function (e) {
     e.preventDefault();
     if (e.keyCode === 13) {
-        results.get('http://api.soundcloud.com/tracks.json?client_id=' + playerID + '&q=' + inputBox.value + '&limit=' + numOfResults + '&linked_partitioning=1', inputBox.value);
+        results.get('//api.soundcloud.com/tracks.json?client_id=' + playerID + '&q=' + inputBox.value + '&limit=' + numOfResults + '&linked_partitioning=1', inputBox.value);
     }
 });
 
